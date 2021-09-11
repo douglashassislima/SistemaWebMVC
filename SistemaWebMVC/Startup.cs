@@ -36,8 +36,9 @@ namespace SistemaWebMVC
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<SistemaWebMVCContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SistemaWebMVCContext")));
+            IServiceCollection serviceCollection = services.AddDbContext<SistemaWebMVCContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("SistemaWebMVCContext"), builder =>
+builder.MigrationsAssembly("SistemaWebMVC")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
