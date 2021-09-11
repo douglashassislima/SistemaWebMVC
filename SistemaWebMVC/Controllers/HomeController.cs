@@ -18,7 +18,7 @@ namespace SistemaWebMVC.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "AvaEstags - Cadastro de novos Desenvolvedores Estagiários";
-            ViewData["Developer"] = "Douglas Henrique de Assis Lima"
+            ViewData["Developer"] = "Douglas Henrique de Assis Lima";
  
             return View();
         }
@@ -26,7 +26,7 @@ namespace SistemaWebMVC.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "E-mail";
-            ViewData["E-mail"] = "douglashenriquedeassis@gmail.com"
+            ViewData["E-mail"] = "douglashenriquedeassis@gmail.com";
 
             return View();
         }
