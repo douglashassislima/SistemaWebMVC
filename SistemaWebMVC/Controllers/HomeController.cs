@@ -17,14 +17,16 @@ namespace SistemaWebMVC.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["Message"] = "AvaEstags - Cadastro de novos Desenvolvedores Estagiários";
+            ViewData["Developer"] = "Douglas Henrique de Assis Lima"
+ 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "E-mail";
+            ViewData["E-mail"] = "douglashenriquedeassis@gmail.com"
 
             return View();
         }
