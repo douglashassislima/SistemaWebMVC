@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SistemaWebMVC.Data;
 using SistemaWebMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SistemaWebMVC.Services
 {
@@ -30,7 +31,7 @@ namespace SistemaWebMVC.Services
 
         public Trainee FindById(int id)
         {
-            return _context.Trainee.FirstOrDefault(obj => obj.Id == id);
+            return _context.Trainee.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
         public void Remove (int id)
         {
