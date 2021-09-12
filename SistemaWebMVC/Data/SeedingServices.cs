@@ -27,8 +27,8 @@ namespace SistemaWebMVC.Data
 
             Department d1 = new Department(1, "Back-end");
             Department d2 = new Department(2, "Front-end");
-            Department d3 = new Department(3, "Back-end");
-            Department d4 = new Department(4, "Back-end");
+            Department d3 = new Department(3, "Fullstack");
+            Department d4 = new Department(4, "UI/UX");
 
             Trainee t1 = new Trainee (1, "Douglas Henrique de Assis Lima", "douglashenriquedeassis@gmail.com", new DateTime(1998, 8, 5), d1);
             Trainee t2 = new Trainee(2, "Isaias Roberto", "isaiasroberto@gmail.com", new DateTime(1994, 7, 26), d2);

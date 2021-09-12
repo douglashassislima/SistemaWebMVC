@@ -8,6 +8,7 @@ namespace SistemaWebMVC.Models.Enums
     public enum TraineeStatus : int
     {
        
-        MetaCompleted = 0
+        MetaCompleted = 0,
+        InProgressing = 1
     }
 }
