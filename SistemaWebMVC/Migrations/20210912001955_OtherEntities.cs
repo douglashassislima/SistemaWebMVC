@@ -16,7 +16,7 @@ namespace SistemaWebMVC.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Nascimento = table.Column<double>(nullable: false),
+                    Nascimento = table.Column<DateTime>(nullable: false),
                     DepartmentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

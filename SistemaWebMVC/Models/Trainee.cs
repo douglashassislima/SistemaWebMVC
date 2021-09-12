@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SistemaWebMVC.Models
 {
@@ -27,12 +25,12 @@ namespace SistemaWebMVC.Models
             Department = department;
         }
 
-        public void AddTrainees (TraineesRecords sr)
+        public void AddTrainees(TraineesRecords sr)
         {
             Trainees.Add(sr);
         }
 
-        public void RemoveTrainees (TraineesRecords sr)
+        public void RemoveTrainees(TraineesRecords sr)
         {
             Trainees.Remove(sr);
         }

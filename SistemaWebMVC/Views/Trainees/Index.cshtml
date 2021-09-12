@@ -1,9 +1,62 @@
-﻿
+﻿@model IEnumerable<SistemaWebMVC.Models.Trainee>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Trainee";
 }
+<h2>@ViewData["Title"]</h2>
 
-<h2>Trainees</h2>
+<p>
+    <a asp-action="Create" class="btn btn-default">Cadastrar novo</a>
+</p>
 
-<p></p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="success">
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Remover</a>
+            </td>
+        </tr>
 
+        }
+    </tbody>
+
+</table>

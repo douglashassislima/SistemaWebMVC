@@ -31,7 +31,7 @@ namespace SistemaWebMVC.Data
             Department d4 = new Department(4, "UI/UX");
 
             Trainee t1 = new Trainee (1, "Douglas Henrique de Assis Lima", "douglashenriquedeassis@gmail.com", new DateTime(1998, 8, 5), d1);
-            Trainee t2 = new Trainee(2, "Isaias Roberto", "isaiasroberto@gmail.com", new DateTime(1994, 7, 26), d2);
+            Trainee t2 = new Trainee(2, "Isaias Roberto", "isaiasroberto@gmail.com", new DateTime(1995, 7, 26), d2);
             Trainee t3 = new Trainee(3, "Pedro Fernandes", "fernandes@gmail.com", new DateTime(1992, 2, 25), d3);
             Trainee t4 = new Trainee(4, "Gabriel Carfe", "gabrielcarfe@gmail.com", new DateTime(2000,2,25), d4);
 
