@@ -14,6 +14,8 @@ namespace SistemaWebMVC.Data
         {
         }
 
-        public DbSet<SistemaWebMVC.Models.Department> Department { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Trainee> Trainee { get; set; }
+        public DbSet<TraineesRecords> TraineesRecords { get; set; }
     }
 }
