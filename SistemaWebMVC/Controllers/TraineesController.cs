@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SistemaWebMVC.Services;
 using SistemaWebMVC.Models;
+using SistemaWebMVC.Models.ViewModels;
 
 namespace SistemaWebMVC.Controllers
 {
@@ -12,9 +13,11 @@ namespace SistemaWebMVC.Controllers
     {
 
         private readonly TraineeService _traineeService;
-        public TraineesController(TraineeService traineeService)
+        private readonly DepartmentService _departmentService;
+        public TraineesController(TraineeService traineeService, DepartmentService departmentService)
         {
             _traineeService = traineeService;
+            _departmentService = departmentService;
         }
         public IActionResult Index()
         {
@@ -23,7 +26,9 @@ namespace SistemaWebMVC.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            var departments = _departmentService.FindAll();
+            var viewModel = new TraineeFormViewModel { Departments = departments }; 
+            return View(viewModel);
         }
 
         [HttpPost]
