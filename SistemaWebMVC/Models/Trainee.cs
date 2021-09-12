@@ -10,6 +10,7 @@ namespace SistemaWebMVC.Models
         public string Email { get; set; }
         public DateTime Nascimento { get; set; }
         public Department Department { get; set; }
+        public int DepartmentId { get; set; }
         public ICollection<TraineesRecords> Trainees { get; set; } = new List<TraineesRecords>();
 
         public Trainee()

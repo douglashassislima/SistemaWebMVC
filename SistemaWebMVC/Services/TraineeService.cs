@@ -23,6 +23,7 @@ namespace SistemaWebMVC.Services
 
         public void Insert (Trainee obj)
         {
+            obj.Department = _context.Department.First();
             _context.Add(obj);
             _context.SaveChanges();
         }
