@@ -27,5 +27,16 @@ namespace SistemaWebMVC.Services
             _context.Add(obj);
             _context.SaveChanges();
         }
+
+        public Trainee FindById(int id)
+        {
+            return _context.Trainee.FirstOrDefault(obj => obj.Id == id);
+        }
+        public void Remove (int id)
+        {
+            var obj = _context.Trainee.Find(id);
+            _context.Trainee.Remove(obj);
+            _context.SaveChanges();
+        }
     }
 }

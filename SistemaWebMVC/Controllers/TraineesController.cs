@@ -38,5 +38,25 @@ namespace SistemaWebMVC.Controllers
             _traineeService.Insert(trainee);
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _traineeService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _traineeService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
