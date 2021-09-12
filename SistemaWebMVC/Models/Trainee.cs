@@ -10,7 +10,7 @@ namespace SistemaWebMVC.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public double Nascimento { get; set; }
+        public DateTime Nascimento { get; set; }
         public Department Department { get; set; }
         public ICollection<TraineesRecords> Trainees { get; set; } = new List<TraineesRecords>();
 
@@ -18,7 +18,7 @@ namespace SistemaWebMVC.Models
         {
         }
 
-        public Trainee(int id, string name, string email, double nascimento, Department department)
+        public Trainee(int id, string name, string email, DateTime nascimento, Department department)
         {
             Id = id;
             Name = name;

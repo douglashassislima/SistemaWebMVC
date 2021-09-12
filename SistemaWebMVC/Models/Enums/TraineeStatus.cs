@@ -7,9 +7,7 @@ namespace SistemaWebMVC.Models.Enums
 {
     public enum TraineeStatus : int
     {
-        Peding =0,
-        Study = 1,
-
-
+       
+        MetaCompleted = 0
     }
 }

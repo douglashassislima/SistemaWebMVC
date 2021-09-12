@@ -40,7 +40,7 @@ namespace SistemaWebMVC.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<double>("Nascimento");
+                    b.Property<DateTime>("Nascimento");
 
                     b.HasKey("Id");
 

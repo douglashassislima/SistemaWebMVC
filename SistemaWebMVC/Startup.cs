@@ -39,14 +39,17 @@ namespace SistemaWebMVC
             IServiceCollection serviceCollection = services.AddDbContext<SistemaWebMVCContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("SistemaWebMVCContext"), builder =>
 builder.MigrationsAssembly("SistemaWebMVC")));
+
+            services.AddScoped<SeedingServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingServices seedingServices)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingServices.Seed();
             }
             else
             {
