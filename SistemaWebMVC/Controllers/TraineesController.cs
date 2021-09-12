@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SistemaWebMVC.Services;
+using SistemaWebMVC.Models;
 
 namespace SistemaWebMVC.Controllers
 {
@@ -19,6 +20,18 @@ namespace SistemaWebMVC.Controllers
         {
             var list = _traineeService.FindAll();
             return View(list);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Create(Trainee trainee)
+        {
+            _traineeService.Insert(trainee);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

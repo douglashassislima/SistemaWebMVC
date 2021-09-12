@@ -20,5 +20,11 @@ namespace SistemaWebMVC.Services
         {
             return _context.Trainee.ToList();
         }
+
+        public void Insert (Trainee obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }
