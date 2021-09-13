@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SistemaWebMVC.Services;
 using SistemaWebMVC.Models;
 using SistemaWebMVC.Models.ViewModels;
+using SistemaWebMVC.Services.Exceptions;
 
 namespace SistemaWebMVC.Controllers
 {
@@ -72,5 +73,44 @@ namespace SistemaWebMVC.Controllers
             }
             return View(obj);
         }
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _traineeService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            List<Department> departments = _departmentService.FindAll();
+
+            TraineeFormViewModel viewModel = new TraineeFormViewModel { Trainee = obj, Departments = departments };
+            return View(viewModel);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Edit (int id, Trainee trainee)
+        {
+            if (id != trainee.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _traineeService.Update(trainee);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException)
+            {
+                return BadRequest();
+            }
+        }
+        
     }
 }
