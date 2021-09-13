@@ -1,4 +1,5 @@
-﻿using SistemaWebMVC.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SistemaWebMVC.Data;
 using SistemaWebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,10 @@ namespace SistemaWebMVC.Services
         {
             _context = context;
         }
-        public List<Department> FindAll()
+
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }

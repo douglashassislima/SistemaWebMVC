@@ -18,39 +18,47 @@ namespace SistemaWebMVC.Services
             _context = context;
         }
 
-        public List<Trainee> FindAll()
+        public async Task<List<Trainee>> FindAllAsync()
         {
-            return _context.Trainee.ToList();
+            return await _context.Trainee.ToListAsync();
         }
 
-        public void Insert(Trainee obj)
+        public async Task InsertAsync(Trainee obj)
         {
 
             _context.Add(obj);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public Trainee FindById(int id)
+        public async Task<Trainee> FindByIdAsync(int id)
         {
-            return _context.Trainee.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
+            return await _context.Trainee.Include(obj => obj.Department).FirstOrDefaultAsync(obj => obj.Id == id);
         }
-        public void Remove(int id)
+        public async Task RemoveAsync (int id)
         {
-            var obj = _context.Trainee.Find(id);
-            _context.Trainee.Remove(obj);
-            _context.SaveChanges();
+            try
+            {
+                var obj = await _context.Trainee.FindAsync(id);
+                _context.Trainee.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException e)
+            {
+                throw new IntegrityException("Trainee em treinamento");
+            }
         }
 
-        public void Update(Trainee obj)
+        public async Task UpdateAsync(Trainee obj)
         {
-            if (!_context.Trainee.Any(x => x.Id == obj.Id))
+            bool hasAny= await _context.Trainee.AnyAsync(x => x.Id == obj.Id);
+            if (!hasAny)
             {
                 throw new NotFoundException("Id not found");
             }
             try
             {
                 _context.Update(obj);
-                _context.SaveChanges();
+               await _context.SaveChangesAsync();
             }
             catch (DbConcurrencyException e)
             {
